@@ -29,7 +29,23 @@
 Solution:
 - After every two letters x is repeating in cipher text.
 - So we created python script to solve this challenge.
-- Script is available at ../Scripts/Cluess.py 
+- Script 
+``` 
+import base64
+
+cipher = "7ax6dx72x4fx47x01x04x6ex56x73x42x5dx52x6bx55x01x46x6ex4dx03x44x6bx59x41x5bx00x05x4c".split('x')
+key = ['3' + i for i in "14143"]
+
+res = []
+for i, n in enumerate(cipher):
+	x = int(n, 16)
+	y = int(key[i % len(key)], 16)
+	res.append(hex(x ^ y)[2:])
+
+res = "".join(res)
+print(bytes.fromhex(res).decode())
+
+```
 - Then wrap it in the flagformat KYC{}.
 - Flag: `KYC{t00_b@sic_f0r_y0u_huh11}`
 ![image](https://user-images.githubusercontent.com/82113145/215673287-0ee23bb1-c2c8-4a71-a111-385af8d3649c.png)
@@ -67,7 +83,7 @@ print(bytes.fromhex(str(value)).decode())
 - Description: `Our forensics experts have acquired the following traffic using a MITM during a pentesting. Can you help us locating the file extracted by hackers?`
 
 Resources/Scripts:
-- [CaptureFile](./Scripts/infiltration.pcapng)
+- [CaptureFile](./Scripts/LocateMe/infiltration.pcapng)
 - Wreshark Tool
 
 Solution:
@@ -90,7 +106,7 @@ Solution:
 
 Resources/Scripts:
 - [ZeroWidthEncodeDecode](https://330k.github.io/misc_tools/unicode_steganography.html)
-- [EncodedFile](./files/invisible/1nv1s1bl3.txt)
+- [EncodedFile](./Scripts/invisible/1nv1s1bl3.txt)
 
 Solution:
 - The challenge name suggests that the flag is invisible/hidden.
@@ -109,8 +125,8 @@ Solution:
 - Description: `Keith’s friend wants to get a pizza. When Keith asked their friend what topping he should get, their friend wrote the following code down on a napkin, and told them that the solution would be his favorite topping. See if you can help Keith break the code.`
 
 Resources/Scripts:
-- [Challenge Code](./files/KeithPizza/topping.java)
-- [Solution Code](./files/KeithPizza/decode.py)
+- [Challenge Code](./Scripts/KeithPizza/topping.java)
+- [Solution Code](./Scripts/KeithPizza/decode.py)
 
 Solution:
 - This is a basic java code where there are 2 functions used the encode the text.
@@ -123,9 +139,6 @@ Solution:
 #### Pyjail
 - Points: 250
 - Description: `Break the jail :)`
-
-Resources/Scripts:
-- [Link](https://example.com)
 
 Solution:
 - We are given a sandboxed python shell where we can't import any modules.
